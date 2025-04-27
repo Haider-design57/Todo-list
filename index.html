@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            transition: opacity 0.5s ease-out;
+        }
+        .splash-screen h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 1s ease-out;
+        }
+        .splash-screen p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-screen" id="splashScreen">
+        <h1>Welcome to TO-DO list</h1>
+        <p>Designed by Haider Abbas</p>
+    </div>
+    <div class="container">
+        <!-- Login Form -->
+        <div class="auth-box" id="loginBox">
+            <div class="welcome-text">
+                <h1>Hello <span id="userName">User</span>!</h1>
+                <p>Welcome back to your account</p>
+            </div>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="input-group">
+                    <input type="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+                
+                <button type="submit" class="auth-button">Login</button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+            </div>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="auth-box" id="signupBox" style="display: none;">
+            <div class="welcome-text">
+                <h1>Create Account</h1>
+                <p>Join us today!</p>
+            </div>
+            
+            <form id="signupForm" class="auth-form">
+                <div class="input-group">
+                    <input type="text" id="signupName" required>
+                    <label for="signupName">Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="signupEmail" required>
+                    <label for="signupEmail">Email</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" id="signupPassword" required>
+                    <label for="signupPassword">Password</label>
+                </div>
+                
+                <button type="submit" class="auth-button">Create Account</button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Already have an account? <a href="#" id="loginLink">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

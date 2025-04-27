@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.5s;
+        }
+        .settings-container {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
+            padding: 2.2rem 2rem 2rem 2rem;
+            width: 100%;
+            max-width: 370px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            backdrop-filter: blur(0px);
+            border: 1.5px solid rgba(255,255,255,0.15);
+            animation: fadeInUp 0.7s cubic-bezier(.39,.575,.56,1.000);
+            position: relative;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .settings-icon {
+            font-size: 2.7rem;
+            color: #667eea;
+            background: rgba(102,126,234,0.08);
+            border-radius: 50%;
+            padding: 18px;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 12px rgba(102,126,234,0.10);
+        }
+        .back-btn {
+            background: #f3e8ff;
+            border: none;
+            border-radius: 12px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 1rem;
+            color: #764ba2;
+            cursor: pointer;
+            position: absolute;
+            left: 18px;
+            top: 18px;
+            box-shadow: 0 2px 8px rgba(102,126,234,0.10);
+            transition: background 0.2s, color 0.2s, transform 0.2s;
+            padding: 0 16px 0 10px;
+            gap: 7px;
+            font-weight: 500;
+            z-index: 2;
+        }
+        .back-btn:hover {
+            background: #e0d7fa;
+            color: #333;
+            transform: translateY(-2px) scale(1.04);
+        }
+        .settings-title {
+            font-size: 2.1rem;
+            font-weight: 700;
+            text-align: center;
+            color: #222;
+            margin-bottom: 0.2rem;
+        }
+        .settings-subtitle {
+            font-size: 1.05rem;
+            color: #6a6a8e;
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+        .logout-btn {
+            margin-top: 1.5rem;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 0.9rem 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            box-shadow: 0 2px 8px rgba(102,126,234,0.10);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .logout-btn:hover {
+            background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+        @media (max-width: 500px) {
+            .settings-container {
+                padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+                max-width: 98vw;
+            }
+            .back-btn {
+                left: 8px;
+                top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="settings-container">
+        <button onclick="window.location.href='todo.html'" class="back-btn" title="Back"><i class="fas fa-arrow-left"></i> <span>Back to Tasks</span></button>
+        <div class="settings-icon"><i class="fas fa-cog fa-spin"></i></div>
+        <div class="settings-title">Settings</div>
+        <div class="settings-subtitle">Manage your account and preferences</div>
+        <button class="settings-btn logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script>
+        // Firebase config (reuse from your project)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDEXIjJwfiizgbraJDAK3mF9LzqxixiFoQ",
+            authDomain: "todolist-5fe29.firebaseapp.com",
+            projectId: "todolist-5fe29",
+            storageBucket: "todolist-5fe29.appspot.com",
+            messagingSenderId: "819797409383",
+            appId: "1:819797409383:web:40e5cd0c944b9f3a299ec2"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        // Log out
+        document.getElementById('logoutBtn').onclick = async () => {
+            await auth.signOut();
+            window.location.href = 'index.html';
+        };
+    </script>
+</body>
+</html> 

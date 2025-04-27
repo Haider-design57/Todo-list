@@ -1,0 +1,393 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 0 15px;
+}
+
+.todo-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #666;
+    font-size: 14px;
+}
+
+.task-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.summary-item {
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+}
+
+.count {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.label {
+    font-size: 12px;
+    color: #666;
+}
+
+.task-list {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.task-item.completed {
+    background: #e8f5e9;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #666;
+}
+
+.task-checkbox {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.task-text {
+    flex: 1;
+    color: #333;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.task-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.task-actions button:hover {
+    color: #667eea;
+}
+
+.task-actions .delete-btn:hover {
+    color: #ff5252;
+}
+
+.add-task {
+    margin-bottom: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #667eea;
+    outline: none;
+}
+
+.confirm-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-button:hover {
+    transform: translateY(-2px);
+}
+
+.add-button, .confirm-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-button {
+    width: 42px;
+}
+
+.bulk-button {
+    width: 100%;
+    padding: 12px;
+    background: #f8f9fa;
+    border: 2px dashed #667eea;
+    border-radius: 10px;
+    color: #667eea;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.bulk-button:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* Scrollbar styling */
+.task-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.task-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+/* Settings menu styles */
+.settings-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.settings-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #667eea;
+    cursor: pointer;
+}
+.settings-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    padding: 10px 0;
+}
+.settings-dropdown button {
+    width: 100%;
+    padding: 10px 15px;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.settings-dropdown button:hover {
+    background: #f5f5f5;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+}
+#bulkTasksInput {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    margin: 15px 0;
+    resize: vertical;
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    .todo-box {
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .task-summary {
+        padding: 10px;
+    }
+
+    .summary-item {
+        min-width: 80px;
+    }
+
+    .count {
+        font-size: 18px;
+    }
+
+    .task-item {
+        padding: 10px;
+    }
+
+    .task-text {
+        font-size: 13px;
+    }
+
+    .input-group input {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .add-button, .confirm-button {
+        height: 38px;
+        font-size: 13px;
+    }
+
+    .add-button {
+        width: 38px;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    #bulkTasksInput {
+        min-height: 80px;
+    }
+
+    .confirm-button {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 360px) {
+    .header h1 {
+        font-size: 18px;
+    }
+
+    .count {
+        font-size: 16px;
+    }
+
+    .label {
+        font-size: 11px;
+    }
+
+    .task-text {
+        font-size: 12px;
+    }
+}
